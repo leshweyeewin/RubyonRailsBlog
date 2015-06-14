@@ -233,7 +233,7 @@ a:hover{
 .post .entry {
 	 padding: 20px 30px 20px 30px;
 	 padding-bottom: 20px;
-	 text-align: justify;
+	 text-align: left;
 	 color: white;
 }
 
@@ -366,7 +366,8 @@ a:hover{
 #calendar #next {
  text-align: right;
 }
-/footer/
+
+/* Footer */
 #footer{
  width: 980px;
  height: 50px;
@@ -389,5 +390,6 @@ a:hover{
 }
 
 form label {
-	width: 110px; display: inline-block;
+	width: 110px; 
+	display: inline-block;
 }

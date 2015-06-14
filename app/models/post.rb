@@ -5,6 +5,7 @@ class Post < ActiveRecord::Base
 	belongs_to :user
 	has_many :post_comments, :dependent => :destroy 
 	# All comments under the post get deleted if the post is deleted
-	validates_presence_of :title  
+	
+	validates_presence_of :title 
 	validates_length_of :body, :minimum => 10
 end
