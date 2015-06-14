@@ -6,17 +6,20 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.find(params[:id])
-		@user = AdminUser.all
+		#@admin_user = AdminUser.all
+		@user = User.all
 		@post_comment = PostComment.new(:post_id => @post.id)
 	end
 
 	def new
-		@post = Post.new
+		#@post = Post.new
+		@post = current_user.posts.build
 		@category = Category.all
 	end
 
 	def create
-		@post = Post.new(params[:post])
+		#@post = Post.new(params[:post])
+		@post = current_user.posts.build(params[:post])
 		if @post.save
 			redirect_to posts_path, :notice => "Your post has been saved."
 		else

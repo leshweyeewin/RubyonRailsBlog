@@ -1,9 +1,20 @@
 <div id="sidebar">
-      <ul>
-       <li>
+  <ul class="nav pull-right">
+    <% if user_signed_in? %>
+        <li>
+            Account : <%= link_to current_user.email, edit_user_registration_path %>
+        </li>
+        <li><%= button_to "Logout", destroy_user_session_path, :method => :delete %></li>
+    <% else %>
+      <li><%= button_to "Sign in", new_user_session_path %></li>
+    <% end %>
+  </ul>
+  <ul>
+    <li>
         <div id="search">
           <%= search_form_for @q do |f| %>
           <%= f.text_field :title_or_body_cont %>
+          <br />
           <%= f.submit "Search" %>
           <% end %>
         </div>
@@ -12,8 +23,7 @@
        <li>
         <h2>Get The Framework</h2>
         <p>You can download Ruby and/or Ruby on Rails for free right now
-         <br>
-         <a style="color:#D93544" href="http://rubyonrails.org/download"></a></p>
+         <a style="color:#D93544;" href="http://rubyonrails.org/download"></a></p>
        </li>
        <li>
         <h2>Categories</h2>

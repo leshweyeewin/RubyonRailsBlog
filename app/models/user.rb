@@ -1,16 +1,8 @@
-class AdminUser < ActiveRecord::Base
+class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
-  # has_many :posts
+  has_many :posts
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, 
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
-  #def email_required?
-  	#false
-  #end
-
-  #def password_required?
-  	#false
-  #end
 end
