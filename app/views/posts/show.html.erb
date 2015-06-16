@@ -9,23 +9,23 @@
 <br />
 <h3>Add a Comment</h3>
 <%= form_for @post_comment do |f| %>
-	<%= f.hidden_field :post_id %>
-	<p>
-		<%= f.label :name %><br />
-		<%= f.text_field :name %>
-	</p>
-	<p>
-		<%= f.label :email %><br />
-		<%= f.text_field :email %>
-	</p>
-	<p>
-		<%= f.label :body %><br />
-		<%= f.text_field :body %>
-	</p>
-	<br />
-	<p>
-		<%= f.submit "Post Comment" %>
-	</p>
+  <%= f.hidden_field :post_id %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :body %><br />
+    <%= f.text_field :body %>
+  </p>
+  <br />
+  <p>
+    <%= f.submit "Post Comment" %>
+  </p>
 <% end %>
 <br />
 <%= render :partial => 'partials/comment', :collection => @post.post_comments %>
