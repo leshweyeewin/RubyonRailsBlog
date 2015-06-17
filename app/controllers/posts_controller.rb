@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
+	before_action :authenticate_user!, except: [:index, :show]
+	
 	def index
 		@q = Post.ransack(params[:q])
-		@posts = @q.result(distinct:true)
+		@posts = @q.result(distinct:true).order("created_at DESC")
 	end
 
 	def show
