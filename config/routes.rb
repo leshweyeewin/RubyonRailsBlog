@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   
   resources :post_comments
-  resources :posts
+  resources :posts 
   resources :categories
   resources :tags
   resources :taggings
@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   get '/contact' , :to => 'pages#contact'
   get '/resources' , :to => 'pages#resources'
   get 'tagged', :to => 'posts#tagged', :as => :tagged
+  get 'posts/:id/like', :to => 'posts#liked', :as => :liked
+  get 'posts/:id/unlike', :to => 'posts#unliked', :as => :unliked
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

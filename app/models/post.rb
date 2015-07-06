@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
 	attr_accessible :title, :body, :category_id, :user_id, :tag_list
 	acts_as_taggable
+	acts_as_votable
 
 	belongs_to :category
 	#belongs_to :admin_user
@@ -10,8 +11,4 @@ class Post < ActiveRecord::Base
 
 	validates_presence_of :title 
 	validates_length_of :body, :minimum => 10
-
-	def tag_list
-		tags.join(",")
-	end
 end

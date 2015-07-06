@@ -8,19 +8,15 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.find(params[:id])
-		#@admin_user = AdminUser.all
 		@user = User.all
 		@post_comment = PostComment.new(:post_id => @post.id)
 	end
 
 	def new
-		#@post = Post.new
 		@post = current_user.posts.build
-		@category = Category.all
 	end
 
 	def create
-		#@post = Post.new(params[:post])
 		@post = current_user.posts.build(params[:post])
 		if @post.save
 			redirect_to posts_path, :notice => "Your post has been saved."
@@ -55,4 +51,23 @@ class PostsController < ApplicationController
 			@posts = Post.all
 		end
 	end
+
+	def liked 
+		@post = Post.find(params[:id])
+		@post.liked_by current_user
+		redirect_to posts_path
+	end
+
+	def unliked
+		@post = Post.find(params[:id])
+		@post.unliked_by current_user
+		redirect_to posts_path
+	end 
+	#def tags
+	#	@users = User.where("LOWER(name) LIKE ?", "%#{params[:q]}%").order(:name)
+	#	@categories = Category.where("name LIKE ?", "%#{params[:q]}%").order(:name)
+	#	respond_to do |format|
+	#		format.json {render :json => @users + @categories, :only =>[:id, :name]}
+	#	end
+	#end
 end

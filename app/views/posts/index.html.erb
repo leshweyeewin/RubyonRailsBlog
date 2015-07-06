@@ -21,11 +21,18 @@
   
   <div class="entry"><%= post.body %></div>
   <div class="byline">
-        <p class="meta"><%= post.created_at.strftime("%b %d %Y") %><!--Posted by <%= post.user.name %>--></p>
+        <p class="meta"><%= post.created_at.strftime("%b %d %Y") %><!--Posted by <%= post.user.name %>--></p><br />
+        <p><%= post.get_likes.size %> Like(s), <%= post.get_dislikes.size %> Dislike(s)</p>
         <p class="links"><%= link_to "Read More", post %>
-        <% if user_signed_in? %>
-         | <%= link_to "Comment", post %></p>
-        <% end %>
+          <% if user_signed_in? %>
+           | <%= link_to "Comment", post %>
+            <% if current_user.liked? post %>
+              | <%= link_to "Unlike", unliked_url(post), method: :put %>
+            <% else %>
+              | <%= link_to "Like", liked_url(post), method: :put %>
+            <% end %>
+          <% end %>
+        </p>
   </div>  
 </div>
 <br />

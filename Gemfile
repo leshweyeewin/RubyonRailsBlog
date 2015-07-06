@@ -23,6 +23,8 @@ gem 'devise'
 
 gem 'ransack' #instead of gem 'meta_search'
 gem 'acts-as-taggable-on'
+gem 'acts_as_votable'
+gem 'rails-jquery-tokeninput'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  :platforms => :ruby
